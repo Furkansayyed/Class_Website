@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block base %}
+
+<h2>Welcome to Quiz Furkan </h2>
+
+<div class="container ">
+    <div class="col-md-6 mx-auto">
+        <form>
+        
+            <div class="form-group">
+                <select class="form-control" name="category" id="">
+                    <option value="Choose">Choose</option>
+                    {% for category in categories %}
+                    <option value={{category.category_name}}>{{category.category_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock base %}

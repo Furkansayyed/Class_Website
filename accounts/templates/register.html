@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block base %}
+
+<section class="pb-5 container mx-auto">
+    <div class="container-fluid mx-auto" style="width: auto;/*margin-left: 93px;*//*margin-right: 37px;*/">
+        <h1 class="text-center pb-2" style="font-size: 25.9px;color: #2F54CF;"><strong>Student Registration</strong></h1>
+        <div class="card shadow mb-3">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">User Settings</p>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}  alert-dismissible fade show my-0" role="alert">
+                    {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+        
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row" style="margin-bottom: 25px;text-align: left;">
+                        <div class="col-sm-4 col-md-4 col-lg-2 col-xl-2 col-xxl-2" style="display: inline;text-align: center;margin-bottom: 25px;"><img class="rounded-circle mb-3 mt-4 img-fluid" src="/media/assets/img/dogs/image2.jpeg" style="display: inline;max-height: 110px;">
+                                <div style="width: 200px;"><input class="form-control invisible custom-file-input" type="file" id="user_group_logo" accept="image/*" name="profile_pic" style="width: 168px;height: 18.8px;">
+                                    <div class="text-center"><label class="form-label" id="user_group_label" for="user_group_logo" style="width: 143.8px;color: #2F54CF;border-style: none;"><i class="fas fa-upload"></i>&nbsp;Choose an image...</label></div>
+                                </div>
+                           <br>
+                        </div>
+                        <div class="col-sm-8 col-md-8 col-lg-9 col-xl-10 col-xxl-10 align-self-center">
+                            <div class="row">
+                                <div class="col-md-12 text-start">
+                                    <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email" required=""></div>
+                                </div>
+                                <div class="col-md-12 text-start">
+                                    <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" placeholder="Username" name="username" required=""></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-start">
+                            <div class="mb-3"><label class="form-label" for="username"><strong>First Name</strong></label><input class="form-control" type="text" id="fname" placeholder="first name" name="fname"></div>
+                        </div>
+                        <div class="col-md-6 text-start">
+                            <div class="mb-3"><label class="form-label" for="username"><strong>Last Name</strong></label><input class="form-control" type="text" id="lname" placeholder="Last Name" name="lname"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Password</strong></label><input class="form-control" type="password" placeholder="password" name="passwd" required="true"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Confirm Password</strong></label><input class="form-control" type="password" placeholder="confirm" name="cpasswd" required=""></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3"><label class="form-label" for="city"><strong>Contact&nbsp;</strong></label><input class="form-control" type="tel" id="cityId" placeholder="contact number" name="contact" required="true"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3"><label class="form-label" for="address"><strong>City</strong></label><input class="form-control" type="text" placeholder="Mumbai" name="address"></div>
+                        </div>
+                        <div class="col">
+                            <p id="emailErrorMsg" class="text-danger" style="display:none;"></p>
+                            <p id="passwordErrorMsg" class="text-danger" style="display:none;"></p>
+                        </div>
+                        <div class="col-md-12 mx-auto" style="text-center: right;"><button class="btn btn-primary btn-sm mx-auto" id="submitBtn" type="submit">Register</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock base %}

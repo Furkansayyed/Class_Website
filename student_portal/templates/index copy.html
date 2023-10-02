@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block base %}
+
+
+<a href="/media/homework_pdfs/index_page.pdf" class="btn btn-primary">View File</a>
+
+{% if homeworks %}
+<div class="container mt-2 p-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Desciption</th>
+                <th scope="col">Due date</th>
+                <th scope="col">Actions</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                {% for hm in homeworks %}
+                <div class="modal fade" id="modal-{{hm.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Submit {{hm.subject}} Homework
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="submitHomework/{{hm.id}}" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <fieldset>
+                                        <div class="mb-3">
+                                            <label for="disabledTextInput" class="form-label">Title</label>
+                                            <input type="text" id="disabledTextInput1" class="form-control"
+                                                value="{{hm.title}}" name="title" readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="disabledTextInput" class="form-label">Subject</label>
+                                            <input type="text" id="disabledTextInput2" class="form-control"
+                                                value="{{hm.subject}}" name="subject" readonly>
+                                        </div>
+                                    </fieldset>
+                                    <div class="mb-3">
+                                        <label class="form-label">Pdf File</label>
+                                        <input type="file" id="disabledTextInput2" class="form-control"
+                                            name="homework_pdf">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Turn in</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{hm.title}}</td>
+                <td>{{hm.subject}}</td>
+                <td>{{hm.description}}</td>
+                <td>{{hm.due_date}}</td>
+                <td><a href="submitHomework/{{hm.id}}" type="submit" data-bs-toggle="modal"
+                        data-bs-target="#modal-{{hm.id}}" class="btn btn-primary">Submit</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% else %}
+<h2 class="text-center">No Homework Assigned 😃😃</h2>
+{% endif %}
+{% endblock base %}
