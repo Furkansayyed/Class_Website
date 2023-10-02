@@ -42,4 +42,5 @@ def get_quiz(request):
 
 
 def quiz(request):
-    return render(request, 'play.html')
+    context = {'category' : request.GET.get('category')}
+    return render(request, 'play.html', context)

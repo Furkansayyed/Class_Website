@@ -2,8 +2,52 @@
 
 {% block base %}
 
+<div id="app">
+    <div class="container ">
+        <div class="col-md-6 mx-auto">
+            <h3>Welcome to Quiz</h3>
+            <hr>
+            <p>What is Django ?</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Default radio
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Default checked radio
+                </label>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
 
 
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        delimiters: ['[[', ']]'],
+        data() {
+            return {
+                category : '{{category}}',
+                question: []
+            };
+        },
+        created() {
+            console.log('Page Loaded....')
+        }
+    });
+
+    // app.mount('#app');
+
+
+
+
+</script>
 {% endblock base %}
-
