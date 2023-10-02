@@ -2,7 +2,10 @@ from django.http.response import JsonResponse
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 import random
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+@login_required(login_url='/accounts/login')
 def home(request):
     context = {'categories' : Category.objects.all()}
 
@@ -11,6 +14,7 @@ def home(request):
         return redirect(f"/quiz/play/?category={request.GET.get('category')}")
     return render(request, 'quiz.html', context)
 
+@login_required(login_url='/accounts/login')
 def get_quiz(request):
     try:
         question_objs = Quiz_Question.objects.all()
@@ -41,7 +45,7 @@ def get_quiz(request):
 
     return HttpResponse("Something Went Wrong...")
 
-
+@login_required(login_url='/accounts/login')
 def quiz(request):
     context = {'category' : request.GET.get('category')}
     return render(request, 'play.html', context)
