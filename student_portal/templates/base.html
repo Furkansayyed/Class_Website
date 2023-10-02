@@ -19,8 +19,14 @@
     {% block extcss %}{% endblock extcss %}
 
     <style>
-        i{
+        i {
             font-size: 20px;
+        }
+
+        #menu .nav-item:hover .nav-link {
+            color: white;
+            background-color: #007BFF;
+            /* Optional background color change */
         }
     </style>
 </head>
@@ -161,10 +167,16 @@
             <h6 class="offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h6>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <img src="/media/{{ request.user.user_profile_pic }}" alt="{{ request.user.first_name }}"
+                class="rounded-circle profile-picture me-3" width="55" height="55">
+            <span class="fs-4">{{ request.user.first_name }}</span>
+        </a>
+        <hr>
         <div class="offcanvas-body px-0">
             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-truncate">
+                    <a href="/" class="nav-link text-truncate">
                         <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">&nbsp;Home</span>
                     </a>
                 </li>
@@ -173,23 +185,30 @@
                         <i class="bi bi-person-circle"></i><span class="ms-1 d-none d-sm-inline">&nbsp;Profile</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/youtube" class="nav-link">
+                <li class="nav-item">
+                    <a href="/youtube" class="nav-link text-truncate">
                         <i class="bi bi-youtube"></i><span class="ms-1 d-none d-sm-inline">&nbsp;Video</span> </a>
                 </li>
-                <li>
-                    <a href="#" class="nav-link text-truncate">
-                        <i class="bi bi-newspaper"></i><span class="ms-1 d-none d-sm-inline">&nbsp;Assignments</span></a>
+                <li class="nav-item">
+                    <a href="/submitHW" class="nav-link text-truncate">
+                        <i class="bi bi-newspaper"></i><span
+                            class="ms-1 d-none d-sm-inline">&nbsp;Assignments</span></a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="#" class="nav-link text-truncate">
                         <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">&nbsp; ToDo's </span></a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="#" class="nav-link text-truncate">
-                        <i class="bi bi-journal-text"></i><span class="ms-1 d-none d-sm-inline">&nbsp; Notes's </span></a>
+                        <i class="bi bi-journal-text"></i><span class="ms-1 d-none d-sm-inline">&nbsp; Notes's
+                        </span></a>
                 </li>
-                <li class="dropdown">
+                <li class="nav-item">
+                    <a href="/quiz/" class="nav-link text-truncate">
+                        <i class="bi bi-patch-question-fill"></i><span class="ms-1 d-none d-sm-inline">&nbsp; Quiz's
+                        </span></a>
+                </li>
+                {% comment %} <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <i class="fs-5 bi-bootstrap"></i><span class="ms-1 d-none d-sm-inline">Bootstrap</span>
@@ -203,12 +222,12 @@
                         </li>
                         <li><a class="dropdown-item" href="#">Sign out</a></li>
                     </ul>
-                </li>
-                <li>
+                </li> {% endcomment %}
+                <li class="nav-item">
                     <a href="#" class="nav-link text-truncate">
-                        <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Products</span></a>
+                        <i class="bi bi-chat-right-text"></i><span class="ms-1 d-none d-sm-inline">Discussion</span></a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="#" class="nav-link text-truncate">
                         <i class="fs-5 bi-people"></i><span class="ms-1 d-none d-sm-inline">Customers</span> </a>
                 </li>

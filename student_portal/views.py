@@ -5,9 +5,9 @@ from django.conf import settings
 from isodate import parse_duration
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 User = get_user_model()
 # Create your views here.
@@ -18,6 +18,12 @@ def index(request):
     # homeworks = Homework.objects.filter(user=user, is_submitted=False)
     return render(request, 'index.html')
 
+
+@login_required(login_url='/accounts/login')
+def getHW(request):
+    user = request.user
+    homeworks = Homework.objects.filter(user=user, is_submitted=False)
+    return render(request, 'homework.html', {'homeworks': homeworks})
 
 
 def services(request):

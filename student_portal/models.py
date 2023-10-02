@@ -23,6 +23,7 @@ class SubmittedHomeWork(models.Model):
     subject = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
     pdf_file = models.FileField(upload_to='homework_pdfs/', null=True)
+    submit_date = models.DateField(auto_now_add=True)
 
     def __str__(self) -> str:
         return f'{self.title} by {self.user}'

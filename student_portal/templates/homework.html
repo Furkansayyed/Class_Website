@@ -2,13 +2,17 @@
 
 {% block base %}
 
+<style>
+    .table>:not(caption)>*>*{
+        color: white;
+    }
+</style>
 
-<a href="/media/homework_pdfs/index_page.pdf" class="btn btn-primary">View File</a>
 
 {% if homeworks %}
-<div class="container mt-2 p-3">
-    <table class="table">
-        <thead>
+<div class="container mt-2 p-3 ">
+    <table class="table table-hover">
+        <thead style="color: white;">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
