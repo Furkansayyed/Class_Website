@@ -24,10 +24,11 @@ def get_quiz(request):
 
         for question_obj in question_objs:
             data.append({
+                'uid' : question_obj.uid,
                 'category' : question_obj.category.category_name,
                 'question' : question_obj.question,
                 'marks': question_obj.marks,
-                'answer': question_obj.get_answer()
+                'answers': question_obj.get_answer()
             })
 
 

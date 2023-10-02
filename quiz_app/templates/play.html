@@ -6,21 +6,18 @@
     <div class="container ">
         <div class="col-md-6 mx-auto">
             <h3>Welcome to Quiz</h3>
-            <hr>
-            <p>What is Django ?</p>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                    Default radio
-                </label>
+            <div v-for="question in questions">
+                <hr>
+                <p>[[question.question]]</p>
+                <div class="form-check" v-for="answer in question.answers">
+                    <input class="form-check-input" @change="checkAnswer($event, question.uid)" :value="answer.answer"
+                        type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        [[answer.answer]]
+                    </label>
+                </div>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    Default checked radio
-                </label>
-            </div>
-            <hr>
+            <button @click="submitQuiz">Submit</button>
         </div>
     </div>
 </div>
@@ -35,11 +32,49 @@
         delimiters: ['[[', ']]'],
         data() {
             return {
-                category : '{{category}}',
-                question: []
+                category: '{{category}}',
+                questions: [],
+                totalScore: 0,
             };
         },
-        created() {
+        methods: {
+            getQuestions() {
+                var _this = this
+                fetch(`/quiz/api/get-quiz/?category=${this.category}`)
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log(result)
+                        _this.questions = result.data
+                    })
+            },
+            checkAnswer(event, uid) {
+                this.questions.map(question => {
+                    score = 0
+                    console.log(question.answers)
+                    answers = question.answers
+                    for (var i = 0; i < answers.length; i++) {
+                        if (answers[i].answer == event.target.value) {
+                            if (answers[i].is_correct) {
+                                score = score + 1
+                                this.totalScore += 1;
+                                alert("Your answer is correct...")
+                            }
+                            else {
+                                alert("Sorry, your answer is incorrect...")
+                            }
+                        }
+                    }
+                })
+                console.log(event.target.value, uid)
+            },
+            submitQuiz() {
+                // Display the total score when the submit button is clicked
+                alert(`Your Total Score: ${this.totalScore}`);
+            },
+
+        },
+        created() { // Life-cyccle Method
+            this.getQuestions()
             console.log('Page Loaded....')
         }
     });
