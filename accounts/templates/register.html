@@ -8,14 +8,7 @@
         <div class="card shadow mb-3">
             <div class="card-header py-3">
                 <p class="text-primary m-0 fw-bold">User Settings</p>
-                {% if messages %}
-                {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}  alert-dismissible fade show my-0" role="alert">
-                    {{message}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
-                {% endif %}
+
         
             </div>
             <div class="card-body">
@@ -68,5 +61,19 @@
     </div>
 </section>
 
+{% if messages %}
+{% for message in messages %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: '{{message.tags}}',
+        title: '{{message.tags}}',
+        text: '{{message}}',
+        //   footer: '<a href="">Why do I have this issue?</a>'
+    });
+
+</script>
+{% endfor %}
+{% endif %}
 
 {% endblock base %}

@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.views import generic
 
 User = get_user_model()
 # Create your views here.
@@ -66,7 +67,7 @@ def submitHW(request, id):
         obj.save()
         Homework.objects.filter(user=user, title=title).update(is_submitted = True)
         messages.success(request, "Home Work Submitted Successfully...")
-        return redirect('/')
+        return redirect('/submitHW')
 
 def contact(request):
     return render(request, 'contact.html')
@@ -126,6 +127,36 @@ def youtube(request):
     }
     return render(request, 'youtube.html', context)
 
+
+
+def notes(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        desc = request.POST.get('desc')
+        nt = Notes.objects.create(
+            user = request.user,
+            title = title,
+            desc = desc
+        )
+        nt.save()
+        messages.success(request, "Notes Added Succefully....")
+        return redirect("/notes")
+
+    notes = Notes.objects.filter(user=request.user)
+    return render(request, 'notes.html', {'notes': notes })
+
+class NotesDetailsView(generic.DetailView):
+    model = Notes
+
+def details_Notes(request, id):
+    notes_obj = Notes.objects.get(id=id)
+    context = {'notes' : notes_obj}
+    return render(request, 'notes_detail.html', context)
+
+def delete_note(request, pk=None):
+    Notes.objects.get(id=pk).delete()
+    messages.info(request, "Note Delete")
+    return redirect("/notes")
 
 
 def studentDiscussion(request):

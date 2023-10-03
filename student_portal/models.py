@@ -43,3 +43,24 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
+class Todo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=123)
+    is_finished = models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return self.title
+
+class Notes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=123)
+    desc = models.TextField()
+
+    class Meta:
+        verbose_name = 'notes'
+        verbose_name_plural = 'notes'
+
+    def __str__(self):
+        return self.title
+

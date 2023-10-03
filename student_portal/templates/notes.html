@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block base %}
+
+<div class="container text-center">
+    <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Create Notes
+    </button>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        {% for note in notes %}
+        <div class="col-md-3">
+            <a href="{% url 'notes-detail' note.id %}">
+                <div class="card">
+                    <div class="card-header">{{note.title}}</div>
+                    <div class="card-body">{{note.desc | slice:"0:100"}}</div>
+                    <div class="card-footer mt-auto "><a href="{% url 'delete-note' note.id %}">
+                            <i class="bi bi-trash3"></i></a>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        <br><br>
+
+    </div>
+</div>
+<br><br>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Description</label>
+                        <textarea name="desc" class="form-control" cols="50" row="50" id="exampleInputPassword1"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add Notes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% if messages %}
+{% for message in messages %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: '{{message.tags}}',
+        title: '{{message.tags}}',
+        text: '{{message}}',
+        //   footer: '<a href="">Why do I have this issue?</a>'
+    });
+
+</script>
+{% endfor %}
+{% endif %}
+
+{% endblock base %}

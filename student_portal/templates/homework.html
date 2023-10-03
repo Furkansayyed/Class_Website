@@ -10,7 +10,7 @@
 
 
 {% if homeworks %}
-<div class="container mt-2 p-3 ">
+<div class="container mt-2 p-3 mb-4">
     <table class="table table-hover">
         <thead style="color: white;">
             <tr>
@@ -85,5 +85,20 @@
 
 {% else %}
 <h2 class="text-center">No Homework Assigned 😃😃</h2>
+{% endif %}
+
+{% if messages %}
+{% for message in messages %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: '{{message.tags}}',
+        title: '{{message.tags}}',
+        text: '{{message}}',
+        //   footer: '<a href="">Why do I have this issue?</a>'
+    });
+
+</script>
+{% endfor %}
 {% endif %}
 {% endblock base %}

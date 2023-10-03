@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="/media/assets/css/Inter.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     <link rel="stylesheet" href="/media/assets/css/Articles-Cards-images.css">
     <link rel="stylesheet" href="/media/assets/css/Custom-Upload-File.css">
     <link rel="stylesheet" href="/media/assets/css/Lightbox-Gallery-No-Gutters-baguetteBox.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     {% block extcss %}{% endblock extcss %}
 
@@ -165,11 +167,11 @@
         data-bs-backdrop="false">
         <div class="offcanvas-header">
             <h6 class="offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h6>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close text-reset text-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <img src="/media/{{ request.user.user_profile_pic }}" alt="{{ request.user.first_name }}"
-                class="rounded-circle profile-picture me-3" width="55" height="55">
+                class="rounded-circle profile-picture mx-3" width="55" height="55">
             <span class="fs-4">{{ request.user.first_name }}</span>
         </a>
         <hr>
@@ -199,7 +201,7 @@
                         <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">&nbsp; ToDo's </span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-truncate">
+                    <a href="/notes" class="nav-link text-truncate">
                         <i class="bi bi-journal-text"></i><span class="ms-1 d-none d-sm-inline">&nbsp; Notes's
                         </span></a>
                 </li>
@@ -246,6 +248,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
 
     <script src="/media/assets/js/bs-init.js"></script>
     <script src="/media/assets/js/bold-and-dark.js"></script>
