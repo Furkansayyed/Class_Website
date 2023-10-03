@@ -136,7 +136,7 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-YOUTUBE_DATA_API_KEY = ''
+YOUTUBE_DATA_API_KEY = 'AIzaSyADlVv26UP1brKrLKpKQWLtivuYNevpIFk'
 # JAZZMIN Theme Settings
 JAZZMIN_UI_TWEAKS = {
     "theme": "darkly",
