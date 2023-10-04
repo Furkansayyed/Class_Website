@@ -48,3 +48,16 @@ def delete_todo(request, pk=None):
     todo.delete()
     messages.info(request, f"{todo.title} is Deletd" )
     return redirect('/utils/todo')
+
+
+def show_models(request):
+    obj = ModelCategory.objects.all()
+    return render(request, 'categories.html', {'categories' : obj})    
+
+def ModelDetail(request, category):
+    obj = PhysicsModels.objects.filter(category=category)
+    return render(request, 'pmodels.html', {'pmodels': obj})
+
+def ModelViews(request, id):
+    obj = PhysicsModels.objects.filter(id=id)
+    return render(request, 'mode_view.html', {'pmodels' : obj})

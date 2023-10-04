@@ -5,5 +5,4 @@ urlpatterns = [
     path('login', views.student_login, name="studetnlogin"),
     path('register', views.student_register, name='studentregister'),
     path('logout', views.logoutUsers, name='logoutstudents'),
-    path('showStudents', views.get_Users, name="studentsshow"),
 ]

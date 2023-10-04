@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block base %}
+
+<div class="container text-center">
+    <h2>Welcome to Detials Page of models</h2>
+</div>
+
+<table class="table table-dark">
+    <thead>
+        <th>Sr.NO</th>
+        <th>Link</th>
+    </thead>
+
+
+    <tbody>
+        {% for md in pmodels %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td><a href="{% url "displaymodels" md.id %}">{{md.title}}</a></td>
+        </tr>
+
+{% endfor %}
+
+    </tbody>
+
+</table>
+
+
+{% endblock base %}

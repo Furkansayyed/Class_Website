@@ -3,3 +3,5 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Todo)
+admin.site.register(ModelCategory)
+admin.site.register(PhysicsModels)

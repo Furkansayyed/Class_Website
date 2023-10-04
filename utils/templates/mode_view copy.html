@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d Model</title>
+
+    <style>
+        model-viewer{
+            height: 100vh;
+            width: 100%;
+        }
+    
+        body{
+            background-color: #414141;
+            overflow: hidden;
+        }
+        
+    </style>
+
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+
+{% for md in pmodels %}
+<model-viewer alt="car" src="/media/{{md.img_3d}}" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
+{% endfor %}
+
+

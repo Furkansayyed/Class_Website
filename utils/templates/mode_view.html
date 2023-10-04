@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block extcss %}
+    <style>
+        model-viewer{
+            height: 100vh;
+            width: 100%;
+        }
+    
+        body{
+            background-color: #414141;
+            overflow: hidden;
+        }
+        
+    </style>
+
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+{% endblock extcss %}
+
+
+{% block base %}
+
+
+{% for md in pmodels %}
+<model-viewer alt="car" src="/media/{{md.img_3d}}" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
+{% endfor %}
+
+{% endblock base %}

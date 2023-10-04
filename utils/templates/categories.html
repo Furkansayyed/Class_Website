@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block base %}
+
+<section class="p-5">
+    <div class="container pb-5">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 class="fw-bold">Physics 3d Models</h2>
+                <p class="text-muted">Interactice 3d Models divided in various categories for better understanding. Have Fun...</p>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;">
+            {% for cat in categories %}
+            <div class="col mb-4">
+                <div><a href="{% url "showpmodels" cat.id %}"><img class="rounded img-fluid shadow w-100 fit-cover" src="/media/{{cat.preview_img}}" style="height: 250px;"></a>
+                    <div class="py-4"><span class="badge bg-primary mb-2">{{cat.category}} Model</span>
+                        <h4 class="fw-bold">{{cat.category}}</h4>
+                        <p class="text-muted">{{cat.description}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock base %}
