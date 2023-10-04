@@ -54,7 +54,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="/media/{{ request.user.user_profile_pic }}" alt="{{ request.user.first_name }}"
-                                class="rounded-circle profile-picture" width="30" height="30">
+                                class="rounded-circle profile-picture" width="36" height="36">
                             <!-- {{ request.user.first_name }} -->
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="profileDropdown">
@@ -179,35 +179,35 @@
             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
                 <li class="nav-item">
                     <a href="/" class="nav-link text-truncate">
-                        <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">&nbsp;Home</span>
+                        <i class="fs-5 bi-house me-2"></i><span class="ms-1 d-none d-sm-inline">Home</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link text-truncate">
-                        <i class="bi bi-person-circle"></i><span class="ms-1 d-none d-sm-inline">&nbsp;Profile</span>
+                        <i class="bi bi-person-circle me-2"></i><span class="ms-1 d-none d-sm-inline">Profile</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/youtube" class="nav-link text-truncate">
-                        <i class="bi bi-youtube"></i><span class="ms-1 d-none d-sm-inline">&nbsp;Video</span> </a>
+                        <i class="bi bi-youtube me-2"></i><span class="ms-1 d-none d-sm-inline">&nbsp;Video</span> </a>
                 </li>
                 <li class="nav-item">
                     <a href="/submitHW" class="nav-link text-truncate">
-                        <i class="bi bi-newspaper"></i><span
+                        <i class="bi bi-newspaper me-2"></i><span
                             class="ms-1 d-none d-sm-inline">&nbsp;Assignments</span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-truncate">
-                        <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">&nbsp; ToDo's </span></a>
+                    <a href="/utils/todo" class="nav-link text-truncate">
+                        <i class="fs-5 bi-table me-2"></i><span class="ms-1 d-none d-sm-inline">ToDo's </span></a>
                 </li>
                 <li class="nav-item">
                     <a href="/notes" class="nav-link text-truncate">
-                        <i class="bi bi-journal-text"></i><span class="ms-1 d-none d-sm-inline">&nbsp; Notes's
+                        <i class="bi bi-journal-text me-2"></i><span class="ms-1 d-none d-sm-inline">Notes's
                         </span></a>
                 </li>
                 <li class="nav-item">
                     <a href="/quiz/" class="nav-link text-truncate">
-                        <i class="bi bi-patch-question-fill"></i><span class="ms-1 d-none d-sm-inline">&nbsp; Quiz's
+                        <i class="bi bi-patch-question-fill me-2"></i><span class="ms-1 d-none d-sm-inline">Quiz's
                         </span></a>
                 </li>
                 {% comment %} <li class="dropdown">
@@ -226,12 +226,12 @@
                     </ul>
                 </li> {% endcomment %}
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-truncate">
-                        <i class="bi bi-chat-right-text"></i><span class="ms-1 d-none d-sm-inline">Discussion</span></a>
+                    <a href="discussion" class="nav-link text-truncate">
+                        <i class="bi bi-chat-right-text me-2"></i><span class="ms-1 d-none d-sm-inline">Discussion</span></a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link text-truncate">
-                        <i class="fs-5 bi-people"></i><span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                        <i class="fs-5 bi-people me-2"></i><span class="ms-1 d-none d-sm-inline">Customers</span> </a>
                 </li>
             </ul>
         </div>

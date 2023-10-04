@@ -2,7 +2,7 @@
 
 {% block base %}
 
-<div class="container text-center">
+<div class="container text-center mb-5">
     <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Create Notes
     </button>
@@ -11,15 +11,16 @@
 <div class="container mb-5">
     <div class="row">
         {% for note in notes %}
-        <div class="col-md-3">
+        <div class="col-md-3 card rounded shadow-lg">
             <a href="{% url 'notes-detail' note.id %}">
-                <div class="card">
-                    <div class="card-header">{{note.title}}</div>
+                <div class="card-body rounded">
+                    <div class="card-header  bg-primary rounded">{{note.title}}</div>
                     <div class="card-body">{{note.desc | slice:"0:100"}}</div>
-                    <div class="card-footer mt-auto "><a href="{% url 'delete-note' note.id %}">
-                            <i class="bi bi-trash3"></i></a>
+                    <div class="card-footer mt-auto rounded "><a href="{% url 'delete-note' note.id %}">
+                            <i class="bi bi-trash3" style="color: red;"></i></a>
                     </div>
                 </div>
+         
             </a>
         </div>
         {% endfor %}

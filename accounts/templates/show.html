@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block base %}
+
+<div class="container">
+    <table class="table table-hover table-dark">
+        <thead>
+            <th>Sr.No</th>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Name</th>
+        </thead>
+
+        <tbody>
+            {% for student in students %}
+            
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>STU-000{{student.id}}</td>
+                <td><img src="/media/{{student.user_profile_pic}}" alt="" class="rounded" height="50" width="50"></td>
+                <td>{{student.first_name}}</td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock base %}

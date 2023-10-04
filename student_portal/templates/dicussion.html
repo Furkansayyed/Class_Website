@@ -46,13 +46,13 @@
     </div>
 
   
-    <div class="container mx-auto col-6">
+    <div class="container mx-auto col-6 card ">
         
         {% for question in questions %}
 
 
-        <div class="card p-3  d-flex flex-row my-3">
-            <img src="/media/imgs/default-user.png" alt="user Profile Image" class="rounded pt-3" height="130" width="125" >
+        <div class="card p-3  d-flex flex-row my-3 border">
+            <img src="/media/{{ request.user.user_profile_pic }}" alt="user Profile Image" class="rounded " height="70" width="75" >
            <div class="container">
             <h3>{{ question.title }} </h3>
             <a href="{% url 'question_detail' question.id %}" style="text-decoration: none;"><h5>{{ question.content }} </h5></a>

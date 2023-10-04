@@ -70,3 +70,7 @@ def logoutUsers(request):
     logout(request)
     return redirect('/')
 
+def get_Users(request):
+    obj = User.objects.all()
+    context = {'students' : obj}
+    return render(request, 'show.html', context)

@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
 {% block base %}
-<section class='text-center container'>
+<section class='container'>
 
     <div class="container">
 
-        <div class="content-section p-0 mt-5">
+        <div class=" p-0 mt-5">
 
-            <div class="m-3">
+            <div class="mb-3">
                 <h2>{{notes.title}}</h2>
             </div>
 
             <hr class="p-0 m-0">
-            <p class="description m-5 p-5">
-                {{notes.desc}}
+            <p class="">
+                {{notes.desc | linebreaks}}
             </p>
             <hr>
         </div>

@@ -1,6 +1,103 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 
 {% block base %}
+
+<div class="container text-center mb-3 mt-3">
+    <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add Todo 
+    </button>
+</div>
+
+<div class="container">
+    {% if not todos_done %}
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Status</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{todo.title}}</td>
+                <td>
+                    <a href="{% url 'update-todo' todo.id %}">
+                        <div class="form-check">
+                            {% if todo.is_finished == True %}
+                            <input class="form-check-input me-3" type="checkbox" value="" checked>
+                            {% else %}
+                            <input class="form-check-input me-3" type="checkbox" value="">
+                            {% endif %}
+                            <label class="form-check-label text-light" for="flexCheckDefault">
+                                Mark as Completed
+                            </label>
+                        </div>
+                    </a>
+                </td>
+
+                <td ><a href="{% url 'delete-todo' todo.id %}" ><i class="bi bi-trash3"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h4>All tasks have been done!! create to add more</h4>
+    {% endif %}
+</div><br><br>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add Notes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% if messages %}
+{% for message in messages %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: '{{message.tags}}',
+        title: '{{message.tags}}',
+        text: '{{message}}',
+        //   footer: '<a href="">Why do I have this issue?</a>'
+    });
+
+</script>
+{% endfor %}
+{% endif %}
+
+
+
+
+
 
 
 {% endblock base %}
