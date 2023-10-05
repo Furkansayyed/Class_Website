@@ -23,7 +23,9 @@ urlpatterns = [
     path('discussion', views.question_list, name='dicussion'),
     path('question/<int:question_id>/', views.question_detail, name='question_detail'),
     path('ask_auestion', views.post_question, name='ask_question'),
-    path('post_answer/<int:question_id>', views.post_answer, name="post_answer")
+    path('post_answer/<int:question_id>', views.post_answer, name="post_answer"),
+
+    path('newsletter', views.newsletter, name="newsletter")
 
 ]
 

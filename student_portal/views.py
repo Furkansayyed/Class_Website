@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.views import generic
+from .utils import *
 
 User = get_user_model()
 # Create your views here.
@@ -164,7 +165,7 @@ def studentDiscussion(request):
 @login_required(login_url='/accounts/login')
 def question_list(request):
     questions = Question.objects.all().order_by("-created_at")
-    return render(request, 'dicussion.html', {'questions': questions})
+    return render(request, 'dicussion.html', {'questions': questions })
 
 def question_detail(request, question_id):
     question = Question.objects.get(pk=question_id)
@@ -190,3 +191,10 @@ def post_answer(request, question_id):
         obj = Answer.objects.create(content=content, user=user, question=question)
         obj.save()
         return redirect('/dicussion')
+
+def newsletter(request):
+    if request.method == "POST":
+        subject = "Thanks for Subscribing our News Letter"
+        message = "Hi-Tech Classes will send you email with articles...."
+        recepient = request.POST.get('news')
+        send_email_to_client(subject=subject, message=message, recepient_list=list(recepient))

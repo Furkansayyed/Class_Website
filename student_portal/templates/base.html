@@ -58,15 +58,14 @@
                             <!-- {{ request.user.first_name }} -->
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="/accounts/profile">Profile</a></li>
                             <li><a class="dropdown-item" href="#offcanvasExample" href="#">Settings</a></li>
                             <!-- <li><a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                                     Link with href
                                   </a>
                                   </li> -->
-                            <li><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvas" aria-controls="offcanvas">Toggle right
-                                    offcanvas</button>
+                            <li><a class="dropdown-item" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvas" aria-controls="offcanvas">Menu</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -183,7 +182,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-truncate">
+                    <a href="/accounts/profile" class="nav-link text-truncate">
                         <i class="bi bi-person-circle me-2"></i><span class="ms-1 d-none d-sm-inline">Profile</span>
                     </a>
                 </li>

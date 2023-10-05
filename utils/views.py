@@ -49,15 +49,17 @@ def delete_todo(request, pk=None):
     messages.info(request, f"{todo.title} is Deletd" )
     return redirect('/utils/todo')
 
-
+@login_required(login_url="/accounts/login")
 def show_models(request):
     obj = ModelCategory.objects.all()
     return render(request, 'categories.html', {'categories' : obj})    
 
+@login_required(login_url="/accounts/login")
 def ModelDetail(request, category):
     obj = PhysicsModels.objects.filter(category=category)
     return render(request, 'pmodels.html', {'pmodels': obj})
 
+@login_required(login_url="/accounts/login")
 def ModelViews(request, id):
     obj = PhysicsModels.objects.filter(id=id)
     return render(request, 'mode_view.html', {'pmodels' : obj})

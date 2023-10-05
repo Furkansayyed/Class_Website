@@ -36,6 +36,7 @@ class Question(models.Model):
 
     def __str__(self) -> str:
         return self.content
+
     
 class Answer(models.Model):
     content = models.TextField()

@@ -9,10 +9,10 @@
             <div v-for="question in questions">
                 <hr>
                 <p>[[question.question]]</p>
-                <div class="form-check" v-for="answer in question.answers">
+                <div class="" v-for="answer in question.answers">
                     <input class="form-check-input" @change="checkAnswer($event, question.uid)" :value="answer.answer"
-                        type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                        type="radio" :name="question.uid" :id="question.uid" />
+                    <label class="form-check-label" >
                         [[answer.answer]]
                     </label>
                 </div>

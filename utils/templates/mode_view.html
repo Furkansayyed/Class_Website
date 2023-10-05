@@ -8,8 +8,8 @@
         }
     
         body{
-            background-color: #414141;
-            overflow: hidden;
+            {% comment %} background-color: #414141; {% endcomment %}
+            overflow: hidden; 
         }
         
     </style>
@@ -22,7 +22,7 @@
 
 
 {% for md in pmodels %}
-<model-viewer alt="car" src="/media/{{md.img_3d}}" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
+<model-viewer alt="car" src="/media/{{md.img_3d}}" autoplay ar ar-modes="webxr scene-viewer" scale="0.2 0.2 0.2"  shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
 {% endfor %}
 
 {% endblock base %}

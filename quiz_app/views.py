@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     context = {'categories' : Category.objects.all()}
 
-
     if request.GET.get('category'):
         return redirect(f"/quiz/play/?category={request.GET.get('category')}")
     return render(request, 'quiz.html', context)
@@ -49,3 +48,4 @@ def get_quiz(request):
 def quiz(request):
     context = {'category' : request.GET.get('category')}
     return render(request, 'play.html', context)
+
