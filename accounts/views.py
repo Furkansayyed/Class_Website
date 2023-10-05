@@ -75,4 +75,7 @@ def get_Users(request):
     context = {'students' : obj}
     return render(request, 'show.html', context)
 
-                   
+@login_required(login_url='/accounts/login')
+def profile(request):
+    profile = User.objects.filter(username=request.user.username)
+    return render(request, 'profile.html', {'profiles': profile})
