@@ -137,7 +137,7 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-YOUTUBE_DATA_API_KEY = 'AIzaSyADlVv26UP1brKrLKpKQWLtivuYNevpIFk'
+YOUTUBE_DATA_API_KEY = ''
 # JAZZMIN Theme Settings
 JAZZMIN_UI_TWEAKS = {
     "theme": "darkly",
@@ -174,5 +174,10 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+<<<<<<< HEAD
 EMAIL_HOST_USER = "hitechclasses6@gmail.com"
 EMAIL_HOST_PASSWORD = "nnkzeluhsnukjuvp"
+=======
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
+>>>>>>> 7f372dc6262fe309de0ecd0935322693536dc70e
