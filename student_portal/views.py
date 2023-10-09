@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse 
 from .models import *
 import requests
 from django.conf import settings
@@ -197,4 +197,6 @@ def newsletter(request):
         subject = "Thanks for Subscribing our News Letter"
         message = "Hi-Tech Classes will send you email with articles...."
         recepient = request.POST.get('news')
-        send_email_to_client(subject=subject, message=message, recepient_list=list(recepient))
+        send_email_to_client(subject=subject, message=message, recepient_list=recepient)
+        messages.info(request, 'Thanks for subscribing our news letter....')
+        return redirect('/')
